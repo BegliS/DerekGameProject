@@ -1,3 +1,35 @@
-[gd_scene format=3 uid="uid://dt8rrw0rt4bdq"]
+[gd_scene load_steps=5 format=3 uid="uid://dt8rrw0rt4bdq"]
 
-[node name="NPC" type="Node2D"]
+[ext_resource type="Script" path="res://Scenes/npc.gd" id="1_6dudy"]
+[ext_resource type="Texture2D" uid="uid://n5wengsdpfbh" path="res://icon.svg" id="2_qh05r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gxdf"]
+size = Vector2(4, 4.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nl4i2"]
+size = Vector2(33, 33)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+position = Vector2(16, -5)
+script = ExtResource("1_6dudy")
+
+[node name="placeholderCollision" type="CollisionShape2D" parent="."]
+position = Vector2(14, -10)
+shape = SubResource("RectangleShape2D_5gxdf")
+
+[node name="player_detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detection_area"]
+position = Vector2(14, -11)
+shape = SubResource("RectangleShape2D_nl4i2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.618603, 0, 0.0188081, 1)
+position = Vector2(14, -11)
+scale = Vector2(0.183594, 0.183594)
+texture = ExtResource("2_qh05r")
+
+[connection signal="mouse_entered" from="player_detection_area" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="player_detection_area" to="." method="_on_Area2D_mouse_exited"]
