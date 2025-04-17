@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dt8rrw0rt4bdq"]
 
-[ext_resource type="Script" path="res://Scenes/npc.gd" id="1_6dudy"]
+[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_6dudy"]
 [ext_resource type="Texture2D" uid="uid://n5wengsdpfbh" path="res://icon.svg" id="2_qh05r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gxdf"]
@@ -10,7 +10,8 @@ size = Vector2(4, 4.5)
 size = Vector2(33, 33)
 
 [node name="StaticBody2D" type="StaticBody2D"]
-position = Vector2(16, -5)
+position = Vector2(-336, 41)
+scale = Vector2(5.48183, 5.43532)
 script = ExtResource("1_6dudy")
 
 [node name="placeholderCollision" type="CollisionShape2D" parent="."]
@@ -30,6 +31,16 @@ modulate = Color(0.618603, 0, 0.0188081, 1)
 position = Vector2(14, -11)
 scale = Vector2(0.183594, 0.183594)
 texture = ExtResource("2_qh05r")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -109.27
+offset_top = -47.2833
+offset_right = 74.7299
+offset_bottom = -24.2833
+theme_override_font_sizes/font_size = 10
+text = "Welcome to Sommerville "
+horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="player_detection_area" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="player_detection_area" to="." method="_on_Area2D_mouse_exited"]
